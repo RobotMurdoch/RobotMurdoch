@@ -5,10 +5,6 @@ Forecast Pipeline - Method Runner (PUBLIC STUB)
 
 Open-source-safe version.
 
-In your private version, this module runs multiple forecasting methods.
-
-Here, we just return an empty dict so the rest of the pipeline
-(Panshul + Combiner + Veo) can still run.
 """
 
 from typing import Dict
@@ -29,5 +25,5 @@ def run_all_methods(qobj: dict) -> Dict[str, dict]:
     q_id = qobj.get("question_id", "unknown")
     log_progress(f"🔬 [PUBLIC] METHOD RUNNER STUB FOR Q {q_id}")
     log("[METHODS] Public stub: Additional legs are not included in this repo.")
-    log("[METHODS] Implement your methods here if you fork this project.")
+    log("[METHODS] Implement methods here if forking this project.")
     return {}
