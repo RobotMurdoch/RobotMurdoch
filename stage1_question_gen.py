@@ -2,10 +2,10 @@
 # -*- coding: utf-8 -*-
 """
 Forecast Pipeline - Stage 1: Question Generation
-Runs NYT API → RS1 → RS2 → QG chain to generate forecasting questions.
+Runs NYT API → RS1 → RS2 → QG chain to generate questions.
 Outputs:
   - OUTPUT_A_MINIMAL_API_ARRAY: List of 3 questions
-  - OUTPUT_B_EVIDENCE_PACKET: Evidence/consequences for each question
+  - OUTPUT_B_EVIDENCE_PACKET: Evidence for each question
 """
 
 import os
@@ -278,7 +278,7 @@ def run_qg(
     Run QG (Question Generator).
     Takes discovery + synthesis, produces:
       - OUTPUT_A_MINIMAL_API_ARRAY: list of questions
-      - OUTPUT_B_EVIDENCE_PACKET: evidence/consequences
+      - OUTPUT_B_EVIDENCE_PACKET: evidence
     
     Returns: (full_response, output_a or None, output_b or None)
     """
@@ -295,7 +295,7 @@ def run_qg(
         "SYNTHESIS_JSON:",
         json.dumps(synthesis_json, indent=2),
         "",
-        f"Generate exactly {max_questions} forecasting questions."
+        f"Generate exactly {max_questions} questions."
     ]
     user_payload = "\n".join(user_lines)
     
@@ -415,7 +415,7 @@ def run_stage1(topic: str, max_questions: int = 3) -> Optional[dict]:
     # Create output directory
     os.makedirs("out", exist_ok=True)
     
-    log_progress(f"🚀 STARTING STAGE 1: QUESTION GENERATION")
+    log_progress(f"🚀 STARTING STAGE 1: GENERATION")
     log(f"[STAGE1] Topic: {topic}")
     log(f"[STAGE1] Max questions: {max_questions}")
     
